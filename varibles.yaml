@@ -9,4 +9,4 @@
   tasks:
     - name: here i am passing the values
       ansible.builtin.debug:
-       msg: "{{course},{{fee}},{{duration}}"
+       msg: "{{course}},{{fee}},{{duration}}"
