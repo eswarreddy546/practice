@@ -1,0 +1,10 @@
+- name: here we are passing the vales
+  hosts: dev
+  become: yes
+  vars_files:
+    declaring.yaml
+
+  tasks:
+    - name: here we are passing the values
+      ansible.builtin.debug:
+       msg: "{{Name}},{{initial}},{{branch}},{{rollnumber}},{{address}}"
