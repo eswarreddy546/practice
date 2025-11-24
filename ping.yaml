@@ -1,0 +1,6 @@
+- name: here i give ping modules
+  hosts: dev
+  tasks:
+    - name: here we are declaring the ping modules
+      ansible.builtin.ping:
+       msg: "Server is ping is fine"
