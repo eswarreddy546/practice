@@ -1,0 +1,12 @@
+- name: Here we are initializing the loop
+  hosts: dev
+  become: yes
+  tasks:
+    - name: here we itirating the loop values
+      ansible.builtin.debug:
+       msg: "{{item}}"
+    
+      loop: 
+        - eswar
+        
+        

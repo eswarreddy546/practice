@@ -1,0 +1,12 @@
+- name: here we are iterating the names here
+  hosts: dev
+  become: yes
+  tasks:
+    - name: here we are passing the values
+      ansible.builtin.debug:
+       msg: "{{item}}"
+
+      loop:
+        - eswar
+        - reddy
+        - vatticharla

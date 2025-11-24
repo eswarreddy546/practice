@@ -1,0 +1,10 @@
+- name: here we declare values and itrating the values
+  hosts: dev
+  become: yes
+
+  tasks:
+    - name: here we passing the values and loop name itration
+      ansible.builtin.debug:
+       msg: "eswar"
+      
+      loop: "{{range (1,6)}}"
