@@ -1,0 +1,10 @@
+- name: here we are passing values
+  hosts: dev
+  become: yes
+  vars:
+    read.yaml
+
+  tasks:
+    - name: here we are passing the values
+      ansible.builtin.debug:
+       msg: "{{course.read}}"
