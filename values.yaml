@@ -1,3 +1,3 @@
-course = "aws"
-fee= "10k"
-duration= 2 months
+course : aws
+fee : 10k"
+duration : 2 months
