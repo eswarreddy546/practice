@@ -4,7 +4,7 @@
   tasks:
     - name: here we itirating the loop values
       ansible.builtin.debug:
-       msg: "{{item}}"
+       msg: "{{item | upper }}"
     
       loop: 
         - eswar
