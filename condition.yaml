@@ -1,0 +1,13 @@
+- name: here we declare values
+  hosts: dev
+  become: yes
+  values:
+    number: 20
+  
+  tasks:
+    - name: here we are passing the values
+      ansible.builtin.debug:
+        msg: " number is less then 20"
+
+
+  when > 10:
