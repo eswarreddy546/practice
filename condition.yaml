@@ -7,7 +7,7 @@
   tasks:
     - name: here we are passing the values
       ansible.builtin.debug:
-        msg: " number is less then 20"
+        msg: " number is less then 20 {{number}}"
 
 
       when > 10:
