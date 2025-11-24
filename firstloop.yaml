@@ -7,4 +7,4 @@
        msg: "{{item}}"
     
       loop: 
-        eswar
+        - eswar
