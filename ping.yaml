@@ -1,5 +1,6 @@
 - name: here i give ping modules
   hosts: dev
+  become: yes
   tasks:
     - name: here we are declaring the ping modules
       ansible.builtin.ping:
