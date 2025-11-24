@@ -1,7 +1,7 @@
 - name: here we declare value
   hosts: dev
   become: yes
-  var:
+  vars:
     number: 20
   
   tasks:
@@ -10,4 +10,4 @@
         msg: " number is less then 20 {{number}}"
 
 
-      when > 10:
+      when: number > 10
