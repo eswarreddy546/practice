@@ -3,4 +3,4 @@
   tasks:
     - name: here we are declaring the ping modules
       ansible.builtin.ping:
-       msg: "Server is ping is fine"
+        msg: "Server is ping is fine"
