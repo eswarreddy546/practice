@@ -1,0 +1,12 @@
+- name: here we are declaring the task level variabbles
+  hosts: dev
+  tasks:
+    - name: here we are passing the values
+      vars:
+       course: Python
+       fee: 2k
+       duration: 1M
+      
+      ansible.builtin.debug:
+       msg: "{{course}}, {{fee}}, {{duration}}"
+
