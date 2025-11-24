@@ -7,4 +7,4 @@
   tasks:
     - name: here we are passing the values
       ansible.builtin.debug:
-       msg: "{{Name}},{{initial}},{{branch}},{{rollnumber}},{{address}}"
+       msg: "{{ Name }},{{ initial }},{{ branch }},{{ rollnumber }},{{ address }}"
