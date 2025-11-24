@@ -1,7 +1,7 @@
-- name: here we declare values
+- name: here we declare value
   hosts: dev
   become: yes
-  values:
+  var:
     number: 20
   
   tasks:
