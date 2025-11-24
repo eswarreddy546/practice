@@ -1,0 +1,12 @@
+- name: here we are declare the variables
+  hosts: dev
+  become: yes
+  vars:
+    course: DevOps
+    fee: 23k
+    duration: 2M
+
+  tasks:
+    - name: here i am passing the values
+      ansible.builtin.debug:
+      msg: "{{course},{fee},{duration}}"
