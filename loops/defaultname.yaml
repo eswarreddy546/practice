@@ -1,0 +1,7 @@
+- name : here we are not declare values here we can declare by one default keyword
+  hosts: dev
+  become: yes
+  tasks:
+    - name : here we mention the default key word
+      ansible.builtin.debug:
+       msg: "{{name}}"
