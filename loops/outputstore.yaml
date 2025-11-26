@@ -5,7 +5,7 @@
   tasks:
     - name: run command with pipe
       ansible.builtin.shell: cat /etc/passwd | grep root   # ✔ FIXED
-      register: store
+      register: store  # store is the userdefined one we can defined amy name here
 
     - name: print only stdout
       ansible.builtin.debug:
