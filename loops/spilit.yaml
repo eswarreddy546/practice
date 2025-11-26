@@ -1,0 +1,10 @@
+- name: here we going to split the values
+  hosts: dev
+  become: yes
+  vars:
+    value: devops,java,python,nodejs,reactjs
+  tasks:
+
+    - name: here we pass the values
+      ansible.builtin.debug:
+       msg: "{{value | split(',') }}"
