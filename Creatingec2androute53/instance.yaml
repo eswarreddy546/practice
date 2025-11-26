@@ -19,6 +19,7 @@
         name: "{{ item }}"
         image_id: "{{ ami_id }}"
         security_group: "{{ sg_group }}"
+        region: "{{ region }}"     # ⭐ REQUIRED LINE
       loop: "{{ instances }}"
       register: ec2outputalldetails
 
