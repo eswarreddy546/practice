@@ -4,4 +4,4 @@
   tasks:
     - name : here we mention the default key word
       ansible.builtin.debug:
-       msg: "{{name}}"
+       msg: "{{name | default ('eswar')}}"
