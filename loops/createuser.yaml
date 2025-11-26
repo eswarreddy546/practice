@@ -14,3 +14,8 @@
     - name: here i am creating the  user here
       ansible.builtin.shell: useradd eswaruser
       when: storingvalue.rc !=0
+
+    
+    - name: here i am printing the user here
+      ansible.builtin.debug:
+       msg: "{{eswaruser}}"
