@@ -2,7 +2,7 @@
   hosts: dev
   become: yes
   vars:
-    value: devops,java,python,nodejs,reactjs
+    value: devops,java,python,nodejs,reactjs # this is string to convert by using split
   tasks:
 
     - name: here we pass the values
