@@ -10,21 +10,21 @@
     instances:
      mongodb
 
-  tasks:
-    - name: here we are creting ec2 instaces
-      amazon.aws.ec2_instance:
-       instance_type: c5.large
-       name: "{{item}}"
-       ami_id: "{{ami_id}}"
-       sg_group: "{{sg_group}}"
-       register: ec2outputalldetails
+   tasks:
+     - name: here we are creting ec2 instaces
+       amazon.aws.ec2_instance:
+        instance_type: c5.large
+        name: "{{item}}"
+        ami_id: "{{ami_id}}"
+        sg_group: "{{sg_group}}"
+        register: ec2outputalldetails
 
       
-      loop:
-        - "{{instances}}"
+       loop:
+         - "{{instances}}"
 
 
-      tasks: 
+       tasks: 
         - name: here i am printing the ec2 server details
           ansible.builtin.debug:
            msg: "{{ec2outputalldetails}}"
