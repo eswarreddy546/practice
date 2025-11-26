@@ -4,8 +4,8 @@
   tasks:
     - name: here we can write the advanced loops here
       ansible.builtin.package:
-       name: "{item.name}"
-       state: "{ item.state}"
+       name: "{{item.name}}"
+       state: "{{ item.state}}"
 
       loop:
         - {name: "nginx", state: "absent"}
