@@ -10,7 +10,7 @@
     instances:
      mongodb
 
-   tasks:
+  tasks:
      - name: here we are creting ec2 instaces
        amazon.aws.ec2_instance:
         instance_type: c5.large
