@@ -3,6 +3,7 @@
   become: yes
 
   vars:
+    region: us-east-1
     ami_id: ami-09c813fb71547fc4f
     sg_group: sg-0aa7a414b66cb243d
     domain_name: "eswar.xyz"
