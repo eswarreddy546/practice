@@ -1,30 +1,26 @@
 - name: here i am creating the instances
   hosts: dev
   become: yes
+
   vars:
     ami_id: ami-09c813fb71547fc4f
     sg_group: sg-0aa7a414b66cb243d
-    Domain_name: "eswar.xyz"
-    Hosted_zone: Z00224221HVTOMR4RK7YI
+    domain_name: "eswar.xyz"
+    hosted_zone: Z00224221HVTOMR4RK7YI
 
     instances:
-     mongodb
+      - mongodb
 
   tasks:
-     - name: here we are creting ec2 instaces
-       amazon.aws.ec2_instance:
+    - name: Create EC2 instances
+      amazon.aws.ec2_instance:
         instance_type: c5.large
-        name: "{{item}}"
-        ami_id: "{{ami_id}}"
-        sg_group: "{{sg_group}}"
-        register: ec2outputalldetails
+        name: "{{ item }}"
+        image_id: "{{ ami_id }}"
+        security_group: "{{ sg_group }}"
+      loop: "{{ instances }}"
+      register: ec2outputalldetails
 
-      
-       loop:
-         - "{{instances}}"
-
-
-       tasks: 
-        - name: here i am printing the ec2 server details
-          ansible.builtin.debug:
-           msg: "{{ec2outputalldetails}}"
+    - name: print ec2 output
+      ansible.builtin.debug:
+        msg: "{{ ec2outputalldetails }}"
