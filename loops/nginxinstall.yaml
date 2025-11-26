@@ -1,0 +1,12 @@
+- name: here we can install nginx commands
+  hosts: dev
+  becomes: yes
+  tasks:
+    - name : here we can passing the values
+      ansible.builtin.package:
+       name: "{{item}}"
+       state: latest
+      
+      loop:
+        - nginx
+        - mysql
