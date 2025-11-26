@@ -16,6 +16,4 @@
       when: storingvalue.rc !=0
 
     
-    - name: here i am printing the user here
-      ansible.builtin.debug:
-       msg: "{{eswaruser}}"
+    
