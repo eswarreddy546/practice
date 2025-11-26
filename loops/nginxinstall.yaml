@@ -1,6 +1,6 @@
 - name: here we can install nginx commands
   hosts: dev
-  becomes: yes
+  become: yes
   tasks:
     - name : here we can passing the values
       ansible.builtin.package:
