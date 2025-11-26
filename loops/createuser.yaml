@@ -1,0 +1,12 @@
+- name: here i am creating the user here if user is avalible skip it not avalible you can create it
+  hosts: dev
+  become: yes
+  tasks:
+    - name: here we are creating the user
+      ansible.builtin.shell: id eswaruser
+      register: storingvalue
+      ignore_errors: yes
+
+    - name: here we are printing the user details
+      ansible.builtin.debug:
+       msg: "{{storingvalue}}"
