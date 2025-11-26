@@ -1,11 +1,12 @@
 - name: here we are storing the output
   hosts: dev
   become: yes
+
   tasks:
-    - name: here are using and storing output
-      ansible.builtin.command: cat /etc/passwd | grep root
+    - name: run command with pipe
+      ansible.builtin.shell: cat /etc/passwd | grep root   # ✔ FIXED
       register: store
 
-    - name: here we are printing above  one output here
+    - name: print only stdout
       ansible.builtin.debug:
-       msg: "{{store}}"
+        msg: "{{ store }}"                         # ✔ FIXED
