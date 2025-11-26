@@ -10,3 +10,7 @@
     - name: here we are printing the user details
       ansible.builtin.debug:
        msg: "{{storingvalue}}"
+
+    - name: here i am creating the  user here
+      ansible.builtin.shell: useradd eswaruser
+      when: storingvalue.rc !=0
