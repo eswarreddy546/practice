@@ -1,0 +1,12 @@
+- name: here we declare the advanced loops for installing the nginx 
+  hosts: dev
+  become: yes
+  tasks:
+    - name: here we can write the advanced loops here
+      ansible.builtin.package:
+       name: "{item.name}"
+       state: "{ item.state}"
+
+      loop:
+        - {name: "nginx", state: "absent"}
+        - { name: "mysql", state: "absent"}
