@@ -9,4 +9,4 @@
 
     - name: print only stdout
       ansible.builtin.debug:
-        msg: "{{ store }}"                         # ✔ FIXED
+        msg: "{{ store }}"                         

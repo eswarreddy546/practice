@@ -1,0 +1,12 @@
+- name: here we are working on redirection
+  hosts: dev
+  become: yes
+  tasks:
+    - name: here we are passing the redirections
+      ansible.builtin.shell: ls -ltr >/tmp/output.txt
+      register: value
+
+    
+    - name: here we are printing the above store value data here
+      ansible.builtin.debug:
+       msg: "{{value}}"
