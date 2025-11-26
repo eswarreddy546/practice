@@ -1,5 +1,6 @@
 - name: here i am creating the instances
-  hosts: dev
+  hosts: localhost
+  connection: local
   become: yes
 
   vars:
