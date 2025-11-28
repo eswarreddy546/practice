@@ -36,10 +36,10 @@
   
     - name: here we are creating the Route53 domain
       amazon.aws.route53:
-      state: present
-      zone: "{{domain_name}}"
-      record: "{{item.item}}.{{domain_name}}"
-      type: A
-      ttl: 1
-      value: "{{ item.instances[0].private_ip_address }}"
+       state: present
+       zone: "{{domain_name}}"
+       record: "{{item.item}}.{{domain_name}}"
+       type: A
+       ttl: 1
+       value: "{{ item.instances[0].private_ip_address }}"
       loop: "{{ ec2outputalldetails.results }}"
