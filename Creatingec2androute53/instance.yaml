@@ -30,5 +30,5 @@
 
     - name: printing the public ip here
       ansible.builtin.debug:
-        msg: "{{item.instances[0].public.ip}}"
-      loop: "{{ec2outputalldetails.item}}"
+       msg: "Public IP: {{ item.instances[0].public_ip_address }}"
+      loop: "{{ ec2outputalldetails.results }}"
