@@ -16,7 +16,7 @@
   tasks:
     - name: Create EC2 instances
       amazon.aws.ec2_instance:
-        instance_type: c5.large
+        instance_type: t2.micro
         name: "{{ item }}"
         image_id: "{{ ami_id }}"
         security_group: "{{ sg_group }}"
