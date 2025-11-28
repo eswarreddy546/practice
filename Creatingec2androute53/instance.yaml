@@ -30,5 +30,5 @@
 
     - name: printing the public ip here
       ansibele.builtin.debug:
-       msg:"{{item.instances[0].public.ip}}"
+        msg: "{{item.instances[0].public.ip}}"
       loop: "{{ec2outputalldetails.item}}"
