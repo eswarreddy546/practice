@@ -16,7 +16,7 @@
       amazon.aws.ec2_instance:
        image_id: ami_id
        instance_type: t2.micro
-       security_group: sg_group
+       security_group: "sg_group"
        region: us-east-1
        name: "{{item}}"
 
