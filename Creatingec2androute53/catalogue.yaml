@@ -54,7 +54,7 @@
       ansible.builtin.copy:
        src: mongo.repo
        dest: /etc/yum.repos.d/mongo.repo
-       
+
     - name: install mongodb client
       ansible.builtin.package:
        name: mongodb-mongosh
@@ -63,9 +63,9 @@
 
     - name: here connect mongobd to catalogue
       ansible.builtin.command: mongosh mongodb.daws86s.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
-      register: eswar.output
+      register: eswaroutput
 
     
     - name: i am printing the user output here
       ansible.builtin.debug:
-       msg: "{{eswar.output}}"
+       msg: "{{eswaroutput}}"
