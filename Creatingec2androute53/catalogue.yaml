@@ -1,0 +1,33 @@
+- name: here we are passing the values
+  hosts: catalogue
+  become: yes
+  tasks: 
+    - name: here we are passing the values
+      ansible.builtin.command: dnf module disable nodejs -y
+
+    - name: here we are passing another one
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+
+    - name: here we installing
+      ansible.builtin.package:
+       name: nodejs 
+       state: present
+
+    - name: here we are adding the user here
+      ansible.builtin.user:
+       name: roboshop 
+       comment: system user
+       system: true
+       shell: /sbin/nologin
+       home: /app
+
+    - name: here we are passing the directory
+      ansible.builtin.file:
+       path: /app/tmp/catalogue.zip 
+
+
+    - name: we are downloading the data
+      ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+      src: /tmp/catalogue.zip 
+      dest: /app/
