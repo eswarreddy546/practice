@@ -23,4 +23,5 @@
 
     - name: anthoer user i am passing here
       ansible.builtin.command: rabbitmqctl add_user roboshop roboshop123
+      ignore_errors: yes
 
