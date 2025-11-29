@@ -23,6 +23,7 @@
 
     - name: here we are passing the directory
       ansible.builtin.file:
+       state: directory
        path: /app/tmp/catalogue.zip 
 
 
