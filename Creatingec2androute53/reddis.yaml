@@ -1,34 +1,32 @@
-- name: here we insatalling the reddis server here
+- name: setup redis server
   hosts: reddis
   become: yes
   tasks:
-    - name: here i am diable the reddis
-      ansible.builtin.shell: dnf module disable redis -y
+  - name: disable default redis
+    ansible.builtin.command: dnf module disable redis -y
 
-    - name: here i enable the reddis
-      ansible.builtin.command: dnf module enable redis:7 -y
+  - name: enable redis 7
+    ansible.builtin.command: dnf module enable redis:7 -y
 
-    - name: here we install the reddis
-      ansible.builtin.service:
-        name: redis
-        state: present
+  - name: install redis
+    ansible.builtin.package:
+      name: redis
+      state: present
+  
+  - name: allow remote connections
+    ansible.builtin.replace:
+      path: /etc/redis/redis.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
 
+  - name: disable proctected mode
+    ansible.builtin.lineinfile:
+      path: /etc/redis/redis.conf
+      regexp: 'protected-mode'
+      line: 'protected-mode no'
 
-    - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
-      ansible.builtin.replace:
-       path: /etc/redis/redis.conf
-       regexp: '127.0.0.1 '
-       replace: '0.0.0.0/0'
-
-
-    - name: Disable Redis protected mode
-      ansible.builtin.lineinfile:
-       path: /etc/redis/redis.conf
-       regexp: '^protected-mode '
-       line: 'protected-mode no'
-       
-
-    - name: Enable and start MongoDB
-      ansible.builtin.service:
-        name: redis
-        enabled: yes
+  - name: start and enable redis
+    ansible.builtin.service:
+      name: redis
+      enabled: yes
+      state: started
