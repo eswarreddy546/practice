@@ -30,5 +30,4 @@
     - name: we are downloading the data
       ansible.builtin.get_url:
        url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
-       src: /tmp/catalogue.zip 
-       dest: /app/
+       dest: /tmp/catalogue.zip
