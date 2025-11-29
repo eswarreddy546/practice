@@ -1,0 +1,17 @@
+- name: here i am installing the mysql server
+  hosts: mysql
+  become: yes
+  tasks:
+    - name: here we are installing the mysql server
+      ansible.builtin.package:
+       name: mysql-server
+       state: present
+
+    - name: here we restat the server
+      ansible.builtin.service:
+       name: mysqld
+       state: started      # starts MySQL now
+       enabled: yes
+
+    - name: here we install the mysql module
+      ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
