@@ -11,7 +11,8 @@
     - name: here we install the reddis
       ansible.builtin.service:
         name: redis
-        state: present
+        state: started
+
 
     - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
       ansible.builtin.replace:
