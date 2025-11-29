@@ -14,6 +14,7 @@
       - mongodb
       - reddis
       - mysql
+      - rabbitmq
 
   tasks:
     - name: Create EC2 instances
