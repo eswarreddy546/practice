@@ -2,23 +2,17 @@
   hosts: reddis
   become: yes
   tasks:
-    - name: here i am declaring the reddis server here
-      ansible.builtin.dnf:
-        name: redis 
-        state: absent
+    - name: here i am diable the reddis
+      ansible.builtin.shell: dnf module disable redis -y
 
-    - name: Enable and start MongoDB
+    - name: here i enable the reddis
+      ansible.builtin.command: dnf module enable redis:7 -y
+
+    - name: here we install the reddis
       ansible.builtin.service:
-        name: redis
-        state: started
-        enabled: yes
-  
-    - name: here we install the reddis module 
-      ansible.builtin.package:
-        name: redis 
+        name: reddis
         state: present
 
-    
     - name: Replace old hostname with new hostname (requires Ansible >= 2.4)
       ansible.builtin.replace:
        path: /etc/redis/redis.conf
@@ -31,12 +25,9 @@
        path: /etc/redis/redis.conf
        regexp: '^protected-mode '
        line: 'protected-mode no'
-       state: present
-       notify: restart redis
-
+       
 
     - name: Enable and start MongoDB
       ansible.builtin.service:
         name: redis
-        state: started
         enabled: yes
