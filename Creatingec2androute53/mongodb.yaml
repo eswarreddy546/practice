@@ -5,23 +5,22 @@
   tasks:
     - name: Copy file with owner and permissions
       ansible.builtin.copy:
-       src: mongo.repo
-       dest: /etc/yum.repos.d/mongo.repo
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
 
-
-    - name: here i am installing the mongodb
+    - name: Install MongoDB
       ansible.builtin.package:
-       name: mongodb-org
-       state: present
+        name: mongodb-org
+        state: present
 
-    - name: enable module here we are writing
+    - name: Enable and start MongoDB
       ansible.builtin.service:
-       name: mongod 
-       state: started
-       enabled: yes
+        name: mongod
+        state: started
+        enabled: yes
 
-    -  name: Replace old hostname with new hostname (requires Ansible >= 2.4)
-       ansible.builtin.replace:
+    - name: Allow MongoDB to listen on all IPs
+      ansible.builtin.replace:
         path: /etc/mongod.conf
-        regexp: '127.0.0.1 '
-        replace: '0.0.0.0/0'
+        regexp: '127.0.0.1'
+        replace: '0.0.0.0'
