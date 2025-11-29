@@ -39,3 +39,29 @@
        dest: /app
        remote_src: yes
       
+    
+    - name: Installing node js dependencies
+      community.general.npm:
+       path: /app
+
+    
+    - name: here we are writing the service module
+      ansible.builtin.copy:
+       src: catalogue.service
+       dest: /etc/systemd/system/catalogue.service
+
+
+    - name: here i am installing one more command here
+      ansible.builtin.package:
+       name: mongodb-mongosh
+       state: present
+
+
+    - name: here connect mongobd to catalogue
+      ansible.builtin.command: mongosh mongodb.daws86s.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+      register: eswar.output
+
+    
+    - name: i am printing the user output here
+      ansible.builtin.debug:
+       msg: "{{eswar.output}}"
