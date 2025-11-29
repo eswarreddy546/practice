@@ -4,7 +4,25 @@
   become: yes
   vars:
     course: eswaar
+    ami_id: ami-09c813fb71547fc4f
+    sg_group: sg-0aa7a414b66cb243d
+    domain_name: "eswar.xyz"
+    hosted_zone: Z00224221HVTOMR4RK7YI
+    instances:
+      - mondodb1
+
   tasks:
+    - name: here i am creating the ec2 instace
+      amazon.aws.ec2_instance:
+       image_id: ami_id
+       instance_type: t2.micro
+       security_group: sg_group
+       region: us-east-1
+       name: "{{item}}"
+
+
+      loop: {{instances}}
+
     - name: here i can start to write the instaces
       ansible.builtin.debug:
        msg: "{{course}}"
