@@ -21,7 +21,7 @@
        name: "{{item}}"
 
 
-      loop: {{instances}}
+      loop: "{{instances}}"
 
     - name: here i can start to write the instaces
       ansible.builtin.debug:
