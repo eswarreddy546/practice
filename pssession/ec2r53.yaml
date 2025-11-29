@@ -1,0 +1,10 @@
+- name: here am creating ec2 instace and route53
+  hosts: localhost
+  connection: local
+  become: yes
+  vars:
+    course: eswaar
+  tasks:
+    - name: here i can start to write the instaces
+      ansible.builtin.debug:
+       msg: "{{course}}"
