@@ -51,7 +51,7 @@
        dest: /etc/systemd/system/catalogue.service
 
 
-    - name: here i am installing one more command here
+    - name: install mongodb client
       ansible.builtin.package:
        name: mongodb-mongosh
        state: present
