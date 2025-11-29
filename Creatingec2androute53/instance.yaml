@@ -12,6 +12,7 @@
 
     instances:
       - mongodb
+      - reddis
 
   tasks:
     - name: Create EC2 instances
