@@ -1,0 +1,70 @@
+- name: here we are creating the user module
+  hosts: user
+  tasks:
+    - name: here disable the node js module here
+      ansible.builtin.command: dnf module disable nodejs -y
+
+    - name: here we enable the node js module here
+      ansible.builtin.command: dnf module enable nodejs:20 -y
+   
+    - name: here we installing the node js module 
+      ansible.builtin.package:
+       name: nodejs 
+       state: present
+
+    - name: here we are creating the user module
+      ansible.builtin.user:
+       name: roboshop 
+       comment: system user
+       shell: /sbin/nologin
+       home: /app
+
+    - name: here we are unstall the module
+      ansible.builtin.file:
+       path: /app
+       state: absent
+
+
+    - name: here we are writing the directory module
+      ansible.builtin.file:
+       state: directory
+       path: /app
+
+    - name: here we are removing the file
+      ansible.builtin.file:
+       path: /tmp/user.zip
+       present: absent
+
+    - name: here we are installing the app code 
+      ansible.builtin.get_url:
+       url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+       dest: /tmp/user.zip
+
+    
+    - name: here we are installing the dependicies
+      community.general.npm:
+       path: /app
+
+
+    - name: here we are unzip the files
+      ansible.builtin.unarchive:
+        src: /tmp/user.zip
+        dest: /app
+        remote_src: yes
+
+
+    - name: here we are working on copying data
+      ansible.builtin.copy:
+       src: user.service
+       dest: /etc/systemd/system/user.service
+
+    - name: damon reload module
+      ansible.builtin.systemd_service:
+       name: user
+       state: started
+       enabled: true
+   
+    - name: here we are stat and enable the module
+      ansible.builtin.service:
+       state: present
+       enabled: yes
