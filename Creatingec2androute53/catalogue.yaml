@@ -69,3 +69,31 @@
     - name: i am printing the user output here
       ansible.builtin.debug:
        msg: "{{eswaroutput}}"
+     
+
+      # - name: evaluate cataalogue database
+  #   community.mongodb.mongodb_shell:
+  #     login_host: mongodb.daws86s.fun
+  #     eval: db.getMongo().getDBNames().indexOf('catalogue')
+  #   register: catalogue_output
+
+  # - name: print catalogue output
+  #   ansible.builtin.debug:
+  #     msg: "{{ catalogue_output }}"
+
+    - name: load products into mongodb
+      ansible.builtin.shell: mongosh --host mongodb.eswar.xyz </app/db/master-data.js
+      when: eswaroutput.stdout | int < 0
+
+  # - name: start and enable cataalogue
+  #   ansible.builtin.service:
+  #     name: catalogue
+  #     enabled: yes
+  #     state: started
+
+    - name: daemon reload enable and start
+      ansible.builtin.systemd_service:
+       name: catalogue
+       enabled: true
+       state: started
+       daemon_reload: true
