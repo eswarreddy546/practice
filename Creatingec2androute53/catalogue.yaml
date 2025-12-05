@@ -62,7 +62,7 @@
 
 
     - name: here connect mongobd to catalogue
-      ansible.builtin.command: mongosh mongodb.eswar.xyz --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+      ansible.builtin.command: mongosh mongodb.eswar.xyz --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"     
       register: eswaroutput
 
     
