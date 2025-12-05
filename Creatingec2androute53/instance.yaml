@@ -12,9 +12,9 @@
 
     instances:
       - mongodb
-      - reddis
-      - mysql
-      - rabbitmq
+      #- reddis
+      #- mysql
+      #- rabbitmq
       - catalogue
   tasks:
     - name: Create EC2 instances
