@@ -46,7 +46,7 @@
 
     - name: here we are working on copying data
       ansible.builtin.copy:
-       src: shipping.service
+       src: Shipping.service
        dest: /etc/systemd/system/shipping.service
 
       
@@ -60,10 +60,10 @@
       community.mysql.mysql_db:
        state: import
        name: all
-       login_host: eswar.xyz
+       login_host: mysql.eswar.xyz
        login_user: root
-       login_password: pRoboShop@1
-       target: "{{}}"
+       login_password: RoboShop@1
+       target: "{{item}}"
 
        loop:
          - /app/db/schema.sql
