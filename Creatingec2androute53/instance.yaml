@@ -17,6 +17,7 @@
       - rabbitmq
       - catalogue
       - user
+      - cart
   tasks:
     - name: Create EC2 instances
       amazon.aws.ec2_instance:

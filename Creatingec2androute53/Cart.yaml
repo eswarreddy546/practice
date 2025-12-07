@@ -57,7 +57,7 @@
 
     - name: here we are writing the copy module
       ansible.builtin.copy:
-       src: /cart.service
+       src: cart.service
        dest: /etc/systemd/system/cart.service
 
 
