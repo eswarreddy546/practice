@@ -1,5 +1,6 @@
 - name: here we are creating the user module
   hosts: user
+  become: yes
   tasks:
     - name: here disable the node js module here
       ansible.builtin.command: dnf module disable nodejs -y
