@@ -64,7 +64,4 @@
        state: started
        enabled: true
    
-    - name: here we are stat and enable the module
-      ansible.builtin.service:
-       state: present
-       enabled: yes
+    
