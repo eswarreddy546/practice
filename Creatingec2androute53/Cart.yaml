@@ -31,10 +31,10 @@
        path: /app
        state: directory
    
-    - name: here we are removing the file
-      ansible.builtin.file:
-       path: /tmp/user.zip
-       present: absent
+    # - name: here we are removing the file
+    #   ansible.builtin.file:
+    #    path: /tmp/user.zip
+    #    present: absent
 
       
     - name: here we are downloading the module
