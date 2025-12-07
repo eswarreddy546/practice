@@ -19,7 +19,6 @@
       - user
       - cart
       - shipping
-      - payment
       - frontend
   tasks:
     - name: Create EC2 instances
