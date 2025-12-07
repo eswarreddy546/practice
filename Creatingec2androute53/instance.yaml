@@ -20,6 +20,7 @@
       - cart
       - shipping
       - frontend
+      - payment
   tasks:
     - name: Create EC2 instances
       amazon.aws.ec2_instance:
