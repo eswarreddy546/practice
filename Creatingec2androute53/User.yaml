@@ -1,68 +1,64 @@
 - name: here we are creating the user module
   hosts: user
   become: yes
+
   tasks:
-    - name: here disable the node js module here
+    - name: disable nodejs module
       ansible.builtin.command: dnf module disable nodejs -y
 
-    - name: here we enable the node js module here
+    - name: enable nodejs 20
       ansible.builtin.command: dnf module enable nodejs:20 -y
-   
-    - name: here we installing the node js module 
+
+    - name: install nodejs
       ansible.builtin.package:
-       name: nodejs 
-       state: present
+        name: nodejs
+        state: present
 
-    - name: here we are creating the user module
+    - name: create roboshop user
       ansible.builtin.user:
-       name: roboshop 
-       comment: system user
-       shell: /sbin/nologin
-       home: /app
+        name: roboshop
+        comment: system user
+        shell: /sbin/nologin
+        home: /app
 
-    - name: here we are unstall the module
+    - name: remove app directory
       ansible.builtin.file:
-       path: /app
-       state: absent
+        path: /app
+        state: absent
 
-
-    - name: here we are writing the directory module
+    - name: create app directory
       ansible.builtin.file:
-       state: directory
-       path: /app
+        path: /app
+        state: directory
 
-    # - name: here we are removing the file
-    #   ansible.builtin.file:
-    #    path: /tmp/user.zip
-    #    present: absent
+    - name: remove old user.zip file
+      ansible.builtin.file:
+        path: /tmp/user.zip
+        state: absent
 
-    - name: here we are installing the app code 
+    - name: download user app
       ansible.builtin.get_url:
-       url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
-       dest: /tmp/user.zip
+        url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+        dest: /tmp/user.zip
 
-    
-    - name: here we are installing the dependicies
-      community.general.npm:
-       path: /app
-
-
-    - name: here we are unzip the files
+    - name: unzip application
       ansible.builtin.unarchive:
         src: /tmp/user.zip
         dest: /app
         remote_src: yes
 
+    - name: install dependencies
+      community.general.npm:
+        path: /app
 
-    - name: here we are working on copying data
+    - name: copy service file
       ansible.builtin.copy:
-       src: user.service
-       dest: /etc/systemd/system/user.service
+        src: user.service
+        dest: /etc/systemd/system/user.service
 
-    - name: damon reload module
+    - name: reload and start user service
       ansible.builtin.systemd_service:
-       name: user
-       state: started
-       enabled: true
-   
-    
+        name: user
+        enabled: true
+        state: started
+        daemon_reload: true
